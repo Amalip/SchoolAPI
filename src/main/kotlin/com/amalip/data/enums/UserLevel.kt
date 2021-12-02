@@ -1,4 +1,4 @@
-package com.amalip.data
+package com.amalip.data.enums
 
 enum class UserLevel(val code: Int) {
 

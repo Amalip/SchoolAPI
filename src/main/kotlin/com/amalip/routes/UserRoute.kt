@@ -1,6 +1,6 @@
 package com.amalip.routes
 
-import com.amalip.data.UserLevel
+import com.amalip.data.enums.UserLevel
 import com.amalip.data.entity.UserEntity
 import com.amalip.data.model.Error
 import com.amalip.data.model.User
