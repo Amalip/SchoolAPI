@@ -9,6 +9,6 @@ data class Course(
     val name: String = "",
     val description: String = "",
     val picture: String = "",
-    var scheduleList: MutableList<String>
+    var scheduleList: MutableList<String> = mutableListOf()
 
 )

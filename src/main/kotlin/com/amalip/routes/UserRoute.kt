@@ -1,6 +1,5 @@
 package com.amalip.routes
 
-import com.amalip.data.entity.CourseEntity
 import com.amalip.data.entity.UserCourseEntity
 import com.amalip.data.enums.UserLevel
 import com.amalip.data.entity.UserEntity
@@ -70,12 +69,11 @@ fun Route.userRoute() {
         }
 
         get("/byCourse") {
-            val userEntity = UserEntity.apply { aliased("ur") }
-            val userCourseEntity = UserCourseEntity.apply { aliased("uc") }
-
             val courseId = call.parameters["courseId"]?.toInt() ?: 0
 
-            val result = db.from(userEntity).leftJoin(userCourseEntity, on = userEntity.id eq userCourseEntity.userId).select().where { userCourseEntity.courseId eq courseId }.map { toUser(it) }
+            val result =
+                db.from(UserEntity).leftJoin(UserCourseEntity, on = UserEntity.id eq UserCourseEntity.userId).select()
+                    .where { UserCourseEntity.courseId eq courseId }.map { toUser(it) }
 
             call.respond(HttpStatusCode.OK, result)
         }
