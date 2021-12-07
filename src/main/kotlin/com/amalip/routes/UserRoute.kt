@@ -70,10 +70,13 @@ fun Route.userRoute() {
 
         get("/byCourse") {
             val courseId = call.parameters["courseId"]?.toInt() ?: 0
+            val userType = call.parameters["userType"]?.toInt() ?: 0
 
             val result =
                 db.from(UserEntity).leftJoin(UserCourseEntity, on = UserEntity.id eq UserCourseEntity.userId).select()
-                    .where { UserCourseEntity.courseId eq courseId }.map { toUser(it) }
+                    .where {
+                        (UserCourseEntity.courseId eq courseId) and (UserEntity.level eq userType)
+                    }.map { toUser(it) }
 
             call.respond(HttpStatusCode.OK, result)
         }

@@ -10,7 +10,7 @@ object DatabaseConnection {
             url = "jdbc:mysql://localhost:3306/school",
             driver = "com.mysql.cj.jdbc.Driver",
             user = "root",
-            password = "***"
+            password = "*Amalip1996Mysql."
         )
 
 }
