@@ -89,9 +89,9 @@ private fun getCourses(result: Query): List<Course> {
     result.forEach { row ->
         val course = toCourse(row).apply {
             scheduleList.add(formatSchedule(row))
-            grades.add(row[UserCourseEntity.grade1] ?: 0)
-            grades.add(row[UserCourseEntity.grade2] ?: 0)
-            grades.add(row[UserCourseEntity.grade3] ?: 0)
+            grades.add(row[UserCourseEntity.grade1] ?: 0.0)
+            grades.add(row[UserCourseEntity.grade2] ?: 0.0)
+            grades.add(row[UserCourseEntity.grade3] ?: 0.0)
         }
         courses.add(course)
     }
